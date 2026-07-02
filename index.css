@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-space-900 dark:bg-space-950 dark:text-slate-100 transition-colors duration-300;
+  }
+
+  /* Visible keyboard focus everywhere — accessibility floor */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ion-500 ring-offset-2 ring-offset-white dark:ring-offset-space-950;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-ion-500/30;
+  }
+}
+
+@layer components {
+  /* Card shell reused across APOD / Rover / NEO */
+  .panel {
+    @apply rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur
+      dark:border-space-700 dark:bg-space-800/60;
+  }
+
+  .panel-hover {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-ion-500/5
+      dark:hover:shadow-ion-500/10;
+  }
+
+  .label-eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ion-600 dark:text-ion-400;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-space-900 px-4 py-2
+      text-sm font-medium text-white transition-colors hover:bg-space-700
+      dark:bg-ion-500 dark:text-space-950 dark:hover:bg-ion-400
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-4 py-2
+      text-sm font-medium text-space-800 transition-colors hover:border-ion-500 hover:text-ion-600
+      dark:border-space-600 dark:text-slate-200 dark:hover:border-ion-400 dark:hover:text-ion-400;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-space-900
+      placeholder:text-slate-400 focus:border-ion-500
+      dark:border-space-600 dark:bg-space-800 dark:text-slate-100 dark:placeholder:text-slate-500;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-slate-200 dark:bg-space-700;
+  }
+
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent
+      dark:via-white/10;
+    animation: shimmer 1.6s infinite;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+}
+
+@layer utilities {
+  .bg-starfield {
+    background-color: #05070d;
+    background-image: radial-gradient(circle at 1px 1px, rgba(94, 234, 212, 0.15) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
